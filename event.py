@@ -21,10 +21,9 @@ class PlasticSCMEventListener(sublime_plugin.EventListener):
             return
         if not readonly(filename):
             return
-        if not client.is_checked_in(filename):
+        if not client.is_controlled(filename):
             return
-        ret = ask_to_checkout()
-        if ret:
+        if ask_to_checkout():
             client.checkout(filename)
 
 
